@@ -1,4 +1,4 @@
-# Three.js Journey
+# Moon Simulation
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
@@ -14,3 +14,6 @@ npm run dev
 # Build for production in the dist/ directory
 npm run build
 ```
+
+## Demo
+[https://moonsimulation.netlify.app/](https://moonsimulation.netlify.app/)
