@@ -16,6 +16,12 @@ body {
     z-index: -1;
 }
 
+.text{
+  &.isHidden{
+    visibility: hidden;
+  }
+}
+
 
 .text_wrap{
   position: absolute;
