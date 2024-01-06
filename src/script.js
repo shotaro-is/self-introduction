@@ -192,7 +192,7 @@ const hideEle = document.getElementById("text");
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
-    if (elapsedTime > 0.8) hideEle.classList.remove("isHidden");
+    if (elapsedTime > 0.1) hideEle.classList.remove("isHidden");
     //sphereMesh.position.x += elapsedTime *0.0001
 
     // Update meterial (uniforms)
