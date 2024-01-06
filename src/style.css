@@ -1,19 +1,66 @@
-*
-{
+*{
     margin: 0;
-    padding: 0;
-}
+    padding: 0;}
 
 html,
-body
-{
+body {
     overflow: hidden;
+    font-family: 'Schibsted Grotesk', sans-serif;
 }
 
-.webgl
-{
+.webgl{
     position: fixed;
     top: 0;
     left: 0;
     outline: none;
+    z-index: -1;
+}
+
+
+.text_wrap{
+  position: absolute;
+  bottom: 200px;
+  left: 100px;
+}
+
+h1{
+  margin-bottom: 0em;
+
+  img{
+    width: 333px;
+    height: 78px;
+  }
+}
+
+p, a{
+  line-height: 1.5;
+}
+
+p{
+  margin-bottom: 1.5em;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0.00em;
+}
+
+a{
+  position: relative;
+  display: inline-block;
+  
+  text-decoration: none;
+}
+
+.links{
+  padding-top: 0.5em;
+}
+
+.link{
+  padding: 8px 13px 4px;
+  margin-right: 5px;
+  border: 2px solid #3e3e3e;
+  font-size: 14px;
+  vertical-align: middle; 
+  letter-spacing: 0.0em;
+  color: #000000;
+  margin-bottom: 10px;
 }

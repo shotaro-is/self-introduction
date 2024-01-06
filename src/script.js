@@ -12,59 +12,19 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 
 
-/**
- * Base
- */
-// Debug
+// Base
 // const gui = new GUI()
-
-// Canvas
 const canvas = document.querySelector('canvas.webgl')
-
-// Scene
 const scene = new THREE.Scene()
 
-/**
- * Geometry
- */
-// Geometry for Background Geometry
-const background = new THREE.SphereGeometry(1.5, 32, 32)
+// Material
 
-//const geoArray = ["sphere", "donut", "ring", "tiny", "disc"]
-//const geoKind = geoArray[Math.floor(Math.random()*geoArray.length)]
-//const geoKind = "tiny" 
-//console.log(geoKind)
+// Sick Purple and Magenta
+const firstColor = new THREE.Vector3( 0.14085389641915935, 0.17280660558853583, 0.5790617660022223);
+const secondColor = new THREE.Vector3( 0.9042740218407768, 0.11835390023809561, 0.8929264272599726);
 
-var sphere = new THREE.SphereGeometry(0.4, 64, 64)
-
-
-/*if (geoKind == "sphere"){
-    var sphere = new THREE.SphereGeometry(0.6, 64, 64)
-} else if ( geoKind === "donut"){
-    var radius = 0.8/4500
-    var tube = 0.16/4500
-    var sphere = new THREE.TorusGeometry(radius * window.innerHeight, tube * window.innerHeight,16,100)
-} else if (geoKind == "ring"){
-    var radius = 0.8/1000
-    var tube = 0.025/1000
-    var sphere = new THREE.TorusGeometry(radius * window.innerHeight, tube * window.innerHeight,16,100)
-} else if (geoKind == "disc"){
-    var radius = 0.6/4500
-    var tube = 0.55*(0.4/0.6)/4500
-    var sphere = new THREE.TorusGeometry(radius * window.innerHeight, tube * window.innerHeight,16,100)
-}
-else {
-    var sphere = new THREE.SphereGeometry(0.4, 64, 64)
-}*/
-
-
-
-/**
- * Material
- */
-// Material for Background
-
-const HSLToRGB = (h, s, l) => {
+// Random Color Generator 
+/*const HSLToRGB = (h, s, l) => {
     s /= 100;
     l /= 100;
     const k = n => (n + h / 30) % 12;
@@ -74,20 +34,18 @@ const HSLToRGB = (h, s, l) => {
     return new THREE.Vector3 (f(0), f(8), f(4))
   };
 
-
 const firstColor = HSLToRGB(360*Math.random(), 80*Math.random()+20, 60*Math.random()+30)
 const secondColor = HSLToRGB(360*Math.random(), 80*Math.random()+20, 60*Math.random()+30)
+console.log(firstColor);
+console.log(secondColor);*/
+
 const accentColor = new THREE.Vector3 (1.0, 1.0, 1.0)
-console.log(firstColor)
-console.log("second color is" + secondColor)
 
 
-//const firstColor = HSLToRGB(111 + colorDegree%360, 18.8, 53.1)
-//const secondColor = HSLToRGB(31 + colorDegree%360, 71.8, 56.9)
 
-const bgsizeArray = [0.05]
 //const bgsizeArray = [0.05, 0.1, 0.2, 0.3]
-const bgsize = bgsizeArray[Math.floor(Math.random()*bgsizeArray.length)]
+//const bgsize = bgsizeArray[Math.floor(Math.random()*bgsizeArray.length)]
+const bgsize = 0.05
 
 const bgdmaterial = new THREE.RawShaderMaterial({
     vertexShader: envVertexShader,
@@ -99,15 +57,9 @@ const bgdmaterial = new THREE.RawShaderMaterial({
         uAccecntColor:{value: accentColor},
         uTime: {value: 0},
         uRandom: {value: bgsize},
-        uPosition: {value: Math.random()*10}   
+        uPosition: {value: 3}   
     }
 })
-
-
-
-// gui.add(myObject, 'myVariable').min(0).max(360).step(1).name('Degree')
-//gui.add(bgdmaterial.uniforms.uFirstColor.value, 'x').min(0).max(20).step(0.01).name('frequencyX')
-// gui.add(bgdmaterial.uniforms.uSecondColor.value, 'y').min(0).max(20).step(0.01).name('frequencyY')
 
 // Material for Sphere
 const sphereMaterial = new THREE.RawShaderMaterial({
@@ -122,17 +74,27 @@ const sphereMaterial = new THREE.RawShaderMaterial({
 })
 
 
-// Mesh
-const backgroundMesh = new THREE.Mesh(background, bgdmaterial)
-const sphereMesh = new THREE.Mesh(sphere, sphereMaterial)
+// Geometry
+const background = new THREE.SphereGeometry(1.5, 32, 32)
 
-sphereMesh.position.x =0
-sphereMesh.position.y =0
-sphereMesh.position.z =0
-sphereMesh.rotation.y = 0
+const spheres = [];
+
+const sphere = new THREE.SphereGeometry(0.03, 64, 64)
+
+for ( let i = 0; i < 500; i++){
+    const mesh = new THREE.Mesh(sphere, sphereMaterial);
+    mesh.position.x = Math.random()*3 - 1.5;
+    mesh.position.y = Math.random()*3 - 1.5;
+    mesh.position.z = Math.random()*3 - 1.5;
+    if (i%3 == 0) mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random();
+    else mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 6;
+    scene.add(mesh);
+    spheres.push(mesh);
+}
+
+const backgroundMesh = new THREE.Mesh(background, bgdmaterial)
 
 scene.add(backgroundMesh)
-scene.add(sphereMesh)
 
 
 // Add Cubecamera
@@ -164,10 +126,6 @@ window.addEventListener('resize', () =>
     camera.aspect = sizes.width / sizes.height
     camera.updateProjectionMatrix()
 
-    // Update Torus
-    sphereMesh.raius = radius * sizes.width
-    sphereMesh.tube =  tube * sizes.width
-
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -192,21 +150,27 @@ scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
+controls.enableZoom = false;
+controls.enablePan = false;
 controls.enableDamping = true
-controls.dampingFactor = 0.5;
-controls.maxDistance = 1.5;
-controls.minDistance = 0.6;
-controls.panSpeed = 0;
-//controls.enableZoom = false;
+//controls.minPolarAngle = 0 * Math.PI; // radians
+// controls.maxPolarAngle =  0.3 * Math.PI; // radians
+controls.minAzimuthAngle = - 0.5 * Math.PI;; // radians
+controls.maxAzimuthAngle =  0.5 * Math.PI;; // radians
+controls.dampingFactor = 0.03;
+
 
 /**
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+    canvas: canvas,
+    antialias: true,
+    alpha: true,
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
 
 // Post Processing
 const composer = new EffectComposer( renderer );
@@ -233,8 +197,22 @@ const tick = () =>
 
     sphereMaterial.uniforms.tCube.value = cubeRenderTarget.texture
 
+    for (let i = 0, il = spheres.length; i < il; i++){
+        const sphere = spheres[i];
+        
+        // Diagonal Flow
+        //sphere.position.x = Math.cos(elapsedTime*0.03 + i*10);
+        //sphere.position.y = Math.cos(elapsedTime*0.03 + i*10);
+        //sphere.position.z = Math.sin(elapsedTime*0.03 + i * 1.1);
+
+        // Baloon Move 
+        // sphere.position.x = Math.cos(elapsedTime*0.05 + i*10);
+        sphere.position.y = Math.cos(elapsedTime*0.05 + i*1.2);
+        sphere.position.z = 1.02 * Math.sin(elapsedTime*0.05 + i * 1.1);
+    }
+
     // Update controls
-    // controls.update()
+    controls.update()
 
     // Render
     // renderer.render(scene, camera)

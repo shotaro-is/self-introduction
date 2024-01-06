@@ -1,4 +1,4 @@
-# Moon Simulation
+# Bubblicious Introduction
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
@@ -16,4 +16,4 @@ npm run build
 ```
 
 ## Demo
-[https://moonsimulation.netlify.app/](https://moonsimulation.netlify.app/)
+[https://shotaro.netlify.app/](https://shotaro.netlify.app/)

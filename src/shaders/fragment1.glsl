@@ -60,7 +60,7 @@ void main(){
     vec3 baseFirst = uFirstColor;
     //vec3 baseFirst = vec3(120./255.,158./255.,113./255.);
     //vec3 accent = uAccentColor;
-    vec3 accent = vec3(0.0, 0.0, 0.0);
+    vec3 accent = vec3(1.0, 1.0, 1.0);
     vec3 baseSecond = uSecondColor;
     // vec3 baseSecond = vec3(224./255.,148./255.,66./255.);
 
