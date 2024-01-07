@@ -159,7 +159,7 @@ controls.enableDamping = true
 controls.minAzimuthAngle = - 0.5 * Math.PI;; // radians
 controls.maxAzimuthAngle =  0.5 * Math.PI;; // radians
 controls.dampingFactor = 0.02;
-controls.rotateSpeed = 0.2;
+controls.rotateSpeed = 1.0;
 
 
 /**
