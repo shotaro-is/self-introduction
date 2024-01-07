@@ -23,6 +23,7 @@ const scene = new THREE.Scene()
 const firstColor = new THREE.Vector3( 0.14085389641915935, 0.17280660558853583, 0.5790617660022223);
 const secondColor = new THREE.Vector3( 0.9042740218407768, 0.11835390023809561, 0.8929264272599726);
 
+
 // Random Color Generator 
 /*const HSLToRGB = (h, s, l) => {
     s /= 100;
@@ -157,7 +158,8 @@ controls.enableDamping = true
 // controls.maxPolarAngle =  0.3 * Math.PI; // radians
 controls.minAzimuthAngle = - 0.5 * Math.PI;; // radians
 controls.maxAzimuthAngle =  0.5 * Math.PI;; // radians
-controls.dampingFactor = 0.03;
+controls.dampingFactor = 0.02;
+controls.rotateSpeed = 0.2;
 
 
 /**
@@ -202,14 +204,6 @@ const tick = () =>
 
     for (let i = 0, il = spheres.length; i < il; i++){
         const sphere = spheres[i];
-        
-        // Diagonal Flow
-        //sphere.position.x = Math.cos(elapsedTime*0.03 + i*10);
-        //sphere.position.y = Math.cos(elapsedTime*0.03 + i*10);
-        //sphere.position.z = Math.sin(elapsedTime*0.03 + i * 1.1);
-
-        // Baloon Move 
-        // sphere.position.x = Math.cos(elapsedTime*0.05 + i*10);
         sphere.position.y = Math.cos(elapsedTime*0.05 + i*1.2);
         sphere.position.z = 1.02 * Math.sin(elapsedTime*0.05 + i * 1.1);
     }

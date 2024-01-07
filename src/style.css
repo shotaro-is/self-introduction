@@ -1,11 +1,11 @@
 *{
-    margin: 0;
-    padding: 0;}
+  margin: 0;
+  padding: 0;}
 
 html,
 body {
-    overflow: hidden;
-    font-family: 'Schibsted Grotesk', sans-serif;
+  overflow: hidden;
+  font-family: 'Schibsted Grotesk', sans-serif;
 }
 
 .webgl{
@@ -13,60 +13,89 @@ body {
     top: 0;
     left: 0;
     outline: none;
-    z-index: -1;
 }
 
-.text{
-  &.isHidden{
-    visibility: hidden;
-  }
+.text {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
+.text.isHidden {
+  visibility: hidden;
+}
 
-.text_wrap{
+.text_wrap {
   position: absolute;
   bottom: 200px;
   left: 100px;
 }
 
-h1{
-  margin-bottom: 0em;
-
-  img{
-    width: 333px;
-    height: 78px;
-  }
+.no-pc .text_wrap {
+  bottom: 40px;
+  left: 20px;
 }
 
-p, a{
+.text h1 {
+  margin-bottom: 0em;
+}
+
+.no-pc .text h1 {
+  margin-bottom: 0em;
+}
+
+.text h1 img {
+  width: 333px;
+  height: 78px;
+}
+
+.no-pc .text h1 img {
+  width: 266.4px;
+  height: 62.4px;
+}
+
+.text p, .text a {
   line-height: 1.5;
 }
 
-p{
+.text .links {
+  padding-top: 0.5em;
+}
+
+.text a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.text a.link {
+  padding: 8px 13px 4px;
+  margin-right: 5px;
+  border: 2px solid #3e3e3e;
+  font-size: 14px;
+  vertical-align: middle;
+  letter-spacing: 0.0em;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.no-pc .text a.link {
+  padding: 8px 13px 6px;
+  font-size: 10px;
+}
+
+.text p {
   margin-bottom: 1.5em;
   color: #000000;
   font-size: 18px;
   letter-spacing: 0.00em;
 }
 
-a{
-  position: relative;
-  display: inline-block;
-  
-  text-decoration: none;
+.no-pc .text p {
+  font-size: 11px;
 }
 
-.links{
-  padding-top: 0.5em;
-}
-
-.link{
-  padding: 8px 13px 4px;
-  margin-right: 5px;
-  border: 2px solid #3e3e3e;
-  font-size: 14px;
-  vertical-align: middle; 
-  letter-spacing: 0.0em;
-  color: #000000;
-  margin-bottom: 10px;
+.text p:last-child {
+  margin-bottom: 0;
 }
