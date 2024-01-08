@@ -19,10 +19,14 @@ const scene = new THREE.Scene()
 
 // Material
 
-// Sick Purple and Magenta
-const firstColor = new THREE.Vector3( 0.14085389641915935, 0.17280660558853583, 0.5790617660022223);
-const secondColor = new THREE.Vector3( 0.9042740218407768, 0.11835390023809561, 0.8929264272599726);
+// Sick Magenta
+const firstColor = new THREE.Vector3( 0.14085389641915935, 0.17280660558853583, 0.5790617660022223); //Blue
+const secondColor = new THREE.Vector3( 0.9042740218407768, 0.11835390023809561, 0.8929264272599726); //Purple
+// const secondColor = new THREE.Vector3(248/255, 1/255, 144/255);
 
+// Max Cooper Blue
+// const firstColor = new THREE.Vector3( 9/255, 39/255, 73/255);
+// const firstColor = new THREE.Vector3( 76/255, 129/255, 176/255);
 
 // Random Color Generator 
 /*const HSLToRGB = (h, s, l) => {
