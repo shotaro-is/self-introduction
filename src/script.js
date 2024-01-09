@@ -20,9 +20,13 @@ const scene = new THREE.Scene()
 // Material
 
 // Sick Magenta
-const firstColor = new THREE.Vector3( 0.14085389641915935, 0.17280660558853583, 0.5790617660022223); //Blue
-const secondColor = new THREE.Vector3( 0.9042740218407768, 0.11835390023809561, 0.8929264272599726); //Purple
+// const firstColor = new THREE.Vector3( 0.14085389641915935, 0.17280660558853583, 0.5790617660022223); //Blue
+// const secondColor = new THREE.Vector3( 0.9042740218407768, 0.11835390023809561, 0.8929264272599726); //Purple
 // const secondColor = new THREE.Vector3(248/255, 1/255, 144/255);
+
+// Olafur Eliasson Red and Yellow
+const firstColor = new THREE.Vector3( 255/255, 21/255, 3/255); //Red
+const secondColor = new THREE.Vector3( 221/255, 235/255, 6/255); //Yellow
 
 // Max Cooper Blue
 // const firstColor = new THREE.Vector3( 9/255, 39/255, 73/255);
